@@ -1,0 +1,46 @@
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "SNS:Publish",
+        "SNS:RemovePermission",
+        "SNS:SetTopicAttributes",
+        "SNS:DeleteTopic",
+        "SNS:ListSubscriptionsByTopic",
+        "SNS:GetTopicAttributes",
+        "SNS:AddPermission",
+        "SNS:Subscribe"
+      ],
+      "Resource": "arn:aws:sns:us-east-1:727966962796:hackathon-s3-events-owais",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceAccount": "727966962796"
+        }
+      }
+    },
+    {
+      "Sid": "AllowS3BucketPublish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:us-east-1:727966962796:hackathon-s3-events-owais",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "727966962796"
+        },
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:s3:::data-hackathon-smit-owais"
+        }
+      }
+    }
+  ]
+}

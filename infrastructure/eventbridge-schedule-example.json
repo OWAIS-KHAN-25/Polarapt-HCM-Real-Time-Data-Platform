@@ -1,0 +1,7 @@
+{
+  "note": "REFERENCE ONLY — not deployed. Free-tier FX API quota may be exceeded by one-minute polling.",
+  "jobs": "rate(1 minute)",
+  "benchmarks": "rate(1 day)",
+  "fx": "rate(1 day)",
+  "enabled": false
+}
